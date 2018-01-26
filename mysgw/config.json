@@ -1,6 +1,6 @@
 {
   "name": "MySensors Gateway",
-  "version": "0.1",
+  "version": "0.11",
   "slug": "mysgw",
   "description": "MySensors Gateway Add-on",
   "url": "https://github.com/ghiglie/hassio-addons/addon-mysgw",
@@ -12,12 +12,13 @@
   "startup": "before",
   "boot": "auto",
   "devices": [ "/dev/mem:/dev/mem:rw" ],
-  "privileged": [ "SYS_RAWIO" ],
-  "ports": {},
+  "privileged": [ "SYS_RAWIO", "SYS_ADMIN", "NET_ADMIN" ],
   "gpio": "true",
-  "host_dbus": "true",
+  "ports": {
+    "5003/tcp": 5003
+  },
   "options": {
-    "log_level": "trace",
+    "log_level": "info",
 	"type": "mqtt",
 	"mqtt_server": "addon_core_mosquitto.hassio",
 	"transport": "nrf24", 

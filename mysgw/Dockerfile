@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --force-yes \
 	 g++ \
 	 git \
 	 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache \
-	 && git clone https://github.com/mysensors/MySensors.git --branch development $APPDIR
+	 && git clone https://github.com/mysensors/MySensors.git --branch master $APPDIR
 
 
 # Copy root filesystem
