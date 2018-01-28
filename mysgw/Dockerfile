@@ -38,4 +38,5 @@ LABEL \
     org.label-schema.vcs-url="https://github.com/ghiglie/hassio-addons/addon-mysgw" \
     org.label-schema.vendor="Marco Ghiglieri Hass.io Add-ons"
 
+RUN chmod a+x /run.sh
 CMD [ "/run.sh" ]
