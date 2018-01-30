@@ -8,17 +8,14 @@ FROM ${BUILD_FROM}
 
 ENV CONFIG_PATH=/data/options.json
 ENV APPDIR=/opt/MySensors
-
-RUN apt-get update && apt-get install -y --force-yes \
-     make \
-	 g++ \
-	 git \
-	 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache \
-	 && git clone https://github.com/mysensors/MySensors.git --branch master $APPDIR
-
-
-# Copy root filesystem
 COPY rootfs /
+RUN  chmod a+x /run.sh && \ 
+     apt-get update && apt-get install -y --force-yes \
+     make \
+     g++ \
+     git \
+     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache \
+     && git clone https://github.com/mysensors/MySensors.git --branch master $APPDIR
 
 # Labels
 LABEL \
