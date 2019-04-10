@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/debian-base:latest
+ARG BUILD_FROM=hassioaddons/debian-base-armhf:latest
 ARG BUILD_ARCH
 ARG BUILD_DATE
 ARG BUILD_REF
