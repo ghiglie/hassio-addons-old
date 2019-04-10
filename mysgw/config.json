@@ -3,7 +3,7 @@
   "version": "0.11",
   "slug": "mysgw",
   "description": "MySensors Gateway Add-on",
-  "url": "https://github.com/ghiglie/hassio-addons/addon-mysgw",
+  "url": "https://github.com/grinnan/hassio-addons/addon-mysgw",
   "arch": [
       "amd64",
 	  "i386",
