@@ -9,12 +9,9 @@ FROM ${BUILD_FROM}
 ENV CONFIG_PATH=/data/options.json
 ENV APPDIR=/opt/MySensors
 COPY rootfs /
-RUN  chmod a+x /run.sh 
-RUN  apt-get update && apt-get install -y --force-yes
-RUN  make \
-     g++ \
-     git \
-     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
+RUN chmod a+x /run.sh 
+RUN apt-get update && apt-get install -y --force-yes make g++ git
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 RUN git clone https://github.com/mysensors/MySensors.git --branch master $APPDIR
 
 # Labels
