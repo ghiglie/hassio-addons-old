@@ -25,7 +25,9 @@
 	"transport": "rf24", 
 	"mqtt_clientid": "mysgw-00",
 	"mqtt_topicin": "mysensors-in",
-	"mqtt_topicout": "mysensors-out"
+	"mqtt_topicout": "mysensors-out",
+	"mqtt_user": "",
+	"mqtt_password": ""
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
@@ -34,7 +36,9 @@
 	"transport": "match(^(none|rf24|rs485|rfm95|rfm69)$)", 
 	"mqtt_clientid": "str",
 	"mqtt_topicin": "str",
-	"mqtt_topicout": "str"
+	"mqtt_topicout": "str",
+	"mqtt_user": "str",
+	"mqtt_password": "str"
   },
   "environment": {
     "LOG_FORMAT": "{LEVEL}: {MESSAGE}"
