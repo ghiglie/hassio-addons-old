@@ -21,7 +21,7 @@
     "log_level": "info",
 	"type": "mqtt",
 	"mqtt_server": "addon_core_mosquitto.hassio",
-	"transport": "nrf24", 
+	"transport": "rf24", 
 	"mqtt_clientid": "mysgw-00",
 	"mqtt_topicin": "mysensors-in",
 	"mqtt_topicout": "mysensors-out"
