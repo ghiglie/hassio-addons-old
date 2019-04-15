@@ -5,6 +5,7 @@
   "description": "MySensors Gateway Add-on",
   "url": "https://github.com/grinnan/hassio-addons/addon-mysgw",
   "arch": [
+	  "aarch64",
       "amd64",
 	  "i386",
       "armhf"
