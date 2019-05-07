@@ -1,0 +1,37 @@
+{
+  "name": "Mycroft",
+  "image": "nolan/hassio-mycroft-{arch}",
+  "version": "18.8.13.0",
+  "slug": "mycroft",
+  "description": "Open source voice assistant",
+  "url": "https://gitlab.com/ndarilek/hassio-mycroft/mycroft",
+  "arch": ["armhf"],
+  "startup": "before",
+  "boot": "auto",
+  "options": {
+    "pulse_server": "/share/pulse-socket"
+  },
+  "schema": {
+    "pulse_server": "str"
+  },
+  "arch": ["armhf"],
+  "auto_uart": true,
+  "hassio_api": true,
+  "homeassistant_api": true,
+  "audio": true,
+  "privileged": [
+    "NET_ADMIN",
+    "SYS_ADMIN",
+    "SYS_RAWIO",
+    "SYS_TIME",
+    "SYS_NICE"
+  ],
+  "map": [
+    "config:rw",
+    "share:rw"
+  ],
+  "tmpfs": "size=10m,uid=1000,rw",
+  "ports": {
+    "8181/tcp": 8181
+  }
+}

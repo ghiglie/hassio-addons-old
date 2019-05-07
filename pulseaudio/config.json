@@ -1,0 +1,24 @@
+{
+  "name": "PulseAudio",
+  "image": "nolan/hassio-pulseaudio-{arch}",
+  "version": "12.2.4",
+  "slug": "pulseaudio",
+  "description": "Proxy for sound applications",
+  "url": "https://gitlab.com/ndarilek/hassio-mycroft/pulseaudio",
+  "startup": "system",
+  "boot": "auto",
+  "options": {},
+  "schema": {},
+  "audio": "true",
+  "devices":["/dev/snd:/dev/snd:rwm"],
+  "host_dbus" : true,
+  "ports": {
+    "4713/tcp": 4713
+  },
+  "privileged": [
+    "SYS_RESOURCE"
+  ],
+  "map": [
+    "share:rw"
+  ]
+}

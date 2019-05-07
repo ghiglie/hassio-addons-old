@@ -1,0 +1,5 @@
+{
+  "build_from": {
+    "armhf": "resin/rpi-raspbian:stretch"
+  }
+}
