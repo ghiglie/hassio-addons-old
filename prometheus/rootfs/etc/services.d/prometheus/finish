@@ -1,0 +1,11 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Prometheus
+# Take down the S6 supervision tree when Prometheus fails
+# ==============================================================================
+if [[ "${1}" -ne 0 ]] && [[ "${1}" -ne 256 ]]; then
+  bashio::log.warning "Prometheus crashed, halting add-on"
+  exec /run/s6/basedir/bin/halt
+fi
+
+bashio::log.info "Prometheus stopped, restarting..."

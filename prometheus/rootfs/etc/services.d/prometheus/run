@@ -1,0 +1,45 @@
+#!/command/with-contenv bashio
+# shellcheck disable=SC2191
+# ==============================================================================
+# Home Assistant Community Add-on: Prometheus
+# Runs the Prometheus Server
+# ==============================================================================
+declare -a options
+declare name
+declare value
+
+bashio::log.info 'Starting prometheus...'
+
+options+=(--config.file="/etc/prometheus/prometheus.yml" )
+options+=(--storage.tsdb.path="/data/prometheus" )
+options+=(--web.console.libraries="/etc/prometheus/console_libraries" )
+options+=(--web.console.templates="/etc/prometheus/consoles" )
+options+=(--web.route-prefix="/" )
+options+=(--web.external-url="http://localhost:9090$(bashio::addon.ingress_entry)/" )
+options+=(--web.enable-lifecycle )
+
+# Load custom environment variables
+for var in $(bashio::config 'env_vars|keys'); do
+    name=$(bashio::config "env_vars[${var}].name")
+    value=$(bashio::config "env_vars[${var}].value")
+    bashio::log.info "Setting ${name} to ${value}"
+    export "${name}=${value}"
+done
+
+if ! bashio::fs.directory_exists /data/prometheus; then
+  mkdir -p /data/prometheus
+  chown prometheus:prometheus /data/prometheus
+fi
+
+if ! bashio::fs.directory_exists /share/prometheus/rules; then
+  mkdir -p /share/prometheus/rules
+  chown -R prometheus:prometheus /share/prometheus/rules
+fi
+
+if ! bashio::fs.directory_exists /share/prometheus/targets; then
+  mkdir -p /share/prometheus/targets
+  chown -R prometheus:prometheus /share/prometheus/targets
+fi
+
+# Run Prometheus
+exec s6-setuidgid prometheus /usr/local/bin/prometheus "${options[@]}"
